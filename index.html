@@ -21,7 +21,7 @@
   <nav>
     <a href="#" onclick="showSection('live-scores')">Live Scores</a>
     <a href="#" onclick="showSection('finished-matches')">Finished</a>
-    <a href="#" onclick="showSection('upcoming-matches')">Schedule</a>
+    <a href="#" onclick="showSection('cricket-26-matches')">Cricket 26</a>
   </nav>
 </header>
 
@@ -79,31 +79,19 @@ fetch("https://api.cricapi.com/v1/currentMatches?apikey=8efc5250-4744-4286-a7bf-
 </script>
 </section>
 
-<!-- Upcoming Matches Section -->
-<section id="upcoming-matches">
-<h2>Upcoming Matches</h2>
-<div id="upcoming"></div>
-<script>
-fetch("https://api.cricapi.com/v1/cricScore?apikey=8efc5250-4744-4286-a7bf-e1362cb40925")
-  .then(res => res.json())
-  .then(result => {
-    const upcomingDiv = document.getElementById("upcoming");
-    upcomingDiv.innerHTML = "";
-
-    result.data.forEach(match => {
-      if (match.status === "Match not started") {
-        upcomingDiv.innerHTML += `
-          <div class="match-card">
-            <h3>${match.t1} vs ${match.t2}</h3>
-            <p><b>Date:</b> ${match.matchDate}</p>
-            <p><b>Status:</b> Upcoming</p>
-          </div>
-        `;
-      }
-    });
-  })
-  .catch(err => console.error("Upcoming API Error:", err));
-</script>
+<!-- Cricket 26 Match Section -->
+<section id="cricket-26-matches">
+<h2>Cricket 26 Match</h2>
+<div id="cricket-26">
+  <p>Your Cricket 26 game scorecard:</p>
+  <div id="scorecard-display">
+    <img src="cricket26 2025-12-28 13-49-20_305.png" alt="Cricket 26 Scorecard" style="max-width: 100%; height: auto; border: 2px solid #333; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  </div>
+  <h3>Dharamshala Stadium</h3>
+  <div id="dharamshala-display">
+    <img src="cricket26 2025-12-23 19-31-37_665.png" alt="Dharamshala Stadium Scorecard" style="max-width: 100%; height: auto; border: 2px solid #333; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  </div>
+</div>
 </section>
 
 <script>
